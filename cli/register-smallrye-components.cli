@@ -7,12 +7,12 @@ echo SETUP: Begin Keycloak custom configuration...
 
 echo SETUP: Add Smallrye Components
 
-# Remove wildfly health and metrics extensions 
-#/subsystem=metrics:remove
-#/extension=org.wildfly.extension.metrics:remove
-
-#/subsystem=health:remove
-#/extension=org.wildfly.extension.health:remove
+## Remove wildfly health and metrics extensions 
+## Seems not necessary
+##/subsystem=metrics:remove
+##/extension=org.wildfly.extension.metrics:remove
+##/subsystem=health:remove
+##/extension=org.wildfly.extension.health:remove
 
 /extension=org.wildfly.extension.microprofile.config-smallrye:add()
 /extension=org.wildfly.extension.microprofile.health-smallrye:add()

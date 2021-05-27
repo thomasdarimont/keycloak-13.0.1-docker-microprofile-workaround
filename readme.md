@@ -41,7 +41,7 @@ To add your custom extensions that use Microprofile, you could use a volume moun
 -v $PWD/tmp/keycloak-extensions.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-extensions.jar:z \
 ```
 
-## Mount your extensions
+## Dependency Upgrades
 
 In order to use eclipse-microprofile with smallrye I needed to add the following entries to the `jboss-deployment-structure.xml`.
 
@@ -57,6 +57,19 @@ In order to use eclipse-microprofile with smallrye I needed to add the following
 
 I also needed to declare the dependencies for smallrye-metrics,smallrye-config,smallrye-health in my extension module.
 ```xml
+
+<properties>
+...
+  <smallrye-config.version>2.0.2</smallrye-config.version>
+  <smallrye-metrics.version>3.0.1</smallrye-metrics.version>
+  <smallrye-health.version>3.0.0</smallrye-health.version>
+
+  <eclipse-microprofile-metrics.version>3.0</eclipse-microprofile-metrics.version>
+  <eclipse-microprofile-health.version>3.0</eclipse-microprofile-health.version>
+  <eclipse-microprofile-config.version>2.0</eclipse-microprofile-config.version>
+...
+</properties>
+
 <dependency>
    <!-- used for metrics collection -->
    <groupId>io.smallrye</groupId>
@@ -69,7 +82,8 @@ I also needed to declare the dependencies for smallrye-metrics,smallrye-config,s
    <!-- used for metrics collection -->
    <groupId>org.eclipse.microprofile.metrics</groupId>
    <artifactId>microprofile-metrics-api</artifactId>
-   <version>${eclipse-metrics.version}</version>
+   <version>${eclipse-microprofile-metrics.version}</version>
    <scope>provided</scope>
 </dependency>
+...
 ```
