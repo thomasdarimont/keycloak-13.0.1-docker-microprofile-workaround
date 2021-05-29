@@ -1,5 +1,10 @@
-Workaround for removed Smallrye Microprofile Implementations in Keycloak 13.0.x
+Workaround for KEYCLOAK-18033 in Keycloak 13.0.x
 ---
+
+Keycloak 13.0.x no longer ships with a Smallrye / Microprofile implementation as it was removed from the underlying Wildfly distribution (23.0.2), see [KEYCLOAK-18033](https://issues.redhat.com/browse/KEYCLOAK-18033).
+
+This is Workaround adds some Microprofile / Smallrye libraries back and configuration to a Keycloak 13.0.x distribution to renable the use of custom Metrics and Health checks.
+It simply copies the required Smallrye / Microprofile modules from a Wildfly full Jakarata EE distribution into a custom Keycloak docker image and registers the required extensions and subsystems with a JBoss CLI script.
 
 # Build
 ```
